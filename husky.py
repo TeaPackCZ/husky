@@ -12,6 +12,12 @@ from logit import *
 from crc16 import ccitt_checksum as checksum
 
 REQ_PLATFORM_INFO = 0x4001
+REQ_PLATFORM_NAME = 0x4002
+REQ_PLATFORM_PING = 0x4000
+
+REQ_6D_ORIENTATION = 0x4604
+REQ_MAGNETOMETERS = 0x4606
+REQ_ENCODERS_DATA = 0x4800
 
 class Husky:
   def __init__( self, com ):
