@@ -90,6 +90,35 @@ def main( com ):
       assert batNum == 1, batNum
       assert batDesc == 0xC2, hex(batDesc) # present, in use, Lead-acid battery
       print batState, batCap
+      
+    if msgType == 0x8002
+      # System name
+      # receiving : Int - length of name
+      #             ASCII - name of platform, Default "Clearpath1"
+      
+      
+    if msgType == 0x8604
+      # 6-axis and orientation data
+      # Roll, Pitch, Yaw (scale 1000, range -Pi -> +Pi rad)
+      # X,Y,Z            (scale 1000, range -32 -> +32 m/s^2)
+      # Roll, pitch, yaw rate (scale 1000, range -10->+10Pi rad/s^2)
+      roll, pitch, yaw, X, Y, Z, rRate, pRate, yRate = struct.unpack("HHHHHHHHH", data )
+      
+      
+    if msgType == 0x8606
+      # magnetometer data
+      # scale 1000, range -32->+32 G
+      magX,magY,magZ = struct.unpack("HHH", data )
+      
+      
+    if msgType == 0x8800
+      # Encoder data
+      # Number of encoders (4?)
+      # total distance : Signed int, 4bytes, scale 1000, range -2.6M->+2.6M m
+      # actual speed : signed short (H), scale 1000, -32->+32 m/s
+      Encoders=[]
+      encNum, Encoders[1][:4], Encoders[2][:4] = struct.unpack("h????HHHH" ,data )
+      
     
 
 if __name__ == "__main__":
